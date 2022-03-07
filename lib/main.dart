@@ -21,6 +21,32 @@ class _ProfleState extends State<Profle> {
     Qutos(title:'I have nothing to declare except my genius',author: 'Zeyad' ),
     Qutos(title:'The truth is rarely pure and never simple',author: 'Owias' ),
   ];
+    Widget CustomCard(qutos) {
+  return Card(
+    color: Colors.grey[850],
+      child: Column(
+        children: [
+          Container(
+            color: Colors.grey[850],
+            padding: const EdgeInsets.fromLTRB(8.0,8,8,8),
+            width: MediaQuery.of(context).size.width,
+            child: Column(
+            children: [
+              Text('${qutos.title}', style: TextStyle(
+                  color: Colors.white,
+                  letterSpacing: 1,fontWeight: FontWeight.bold,
+                  fontSize: 13)),
+              Text('${qutos.author}', style: TextStyle(
+                  color: Colors.white,
+                  letterSpacing: 1,fontWeight: FontWeight.bold,
+                  fontSize: 18)),
+            ],
+            ),
+          ),
+        ],
+      ),
+  );
+}
 
   @override
   Widget build(BuildContext context) {
@@ -93,13 +119,7 @@ class _ProfleState extends State<Profle> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: qutos
-                        .map((ele) => Text(
-                              '${ele.title} - ${ele.author}',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  letterSpacing: 1,
-                                  fontSize: 14),
-                            ))
+                        .map((ele) => CustomCard(ele))
                         .toList(),
                   ))
             ],
